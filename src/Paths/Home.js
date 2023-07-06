@@ -54,7 +54,8 @@ function Home() {
   }, []);
 
   return (
-    <Center>
+    <Center fontWeight={"bold"}fontFamily={"Montserrat"}>
+      <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'/>
       <Stack direction="column" w="95%">
         <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="10px">
           <h1>Engagement Score By Room</h1>
