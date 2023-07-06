@@ -25,7 +25,7 @@ function Heatmaps() {
   };
 
   const imageStyle = {
-    width: '25%',
+    width: '37%',
     margin: 'auto'
   };
 
