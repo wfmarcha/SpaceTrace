@@ -6,10 +6,38 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Header from "./Components/Header";
 import { BrowserRouter } from "react-router-dom";
 
+import { extendTheme } from "@chakra-ui/react";
+
+// 2. Call `extendTheme` and pass your custom values
+// set default font to be Monstserrat
+const theme = extendTheme({
+  initialColorMode: "light",
+  colors: {
+    brand: {
+      100: "#f7fafc",
+      // ...
+      900: "#1a202c",
+    },
+  },
+  fonts: {
+    heading: "Montserrat",
+    body: "Montserrat",
+  },
+
+  // make it so that body background color is different shade of white
+  styles: {
+    global: {
+      body: {
+        bg: "blue.200",
+      },
+    },
+  },
+});
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <BrowserRouter>
         <Header />
         <App />
