@@ -30,7 +30,8 @@ function Heatmaps() {
   };
 
   return (
-    <div>
+    <div style={{fontWeight:"bold"}}>
+      <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'/>
       <h1>Heatmaps</h1>
       <div style={boxStyle} onClick={() => handleClick(0)}>
         <h1 style={{ marginTop: 0 }}>Floor 1</h1>
