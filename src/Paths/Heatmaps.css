@@ -1,0 +1,15 @@
+.box {
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center; /* Center the content horizontally */
+  }
+  
+  .box-title {
+    margin-top: 0; /* Remove default top margin to center the text vertically */
+  }
+  
+  .box-image {
+    width: 100%;
+  }
