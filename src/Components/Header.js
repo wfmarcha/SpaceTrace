@@ -1,4 +1,4 @@
-import logo from "./logo.png"
+import logo from "./logo.png";
 import {
   Box,
   Flex,
@@ -45,8 +45,18 @@ export default function WithSubnavigation() {
           display={{ base: "inline", md: "none" }}
         ></Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'/>
-        <img style={{width:"70%",marginTop:"-10px", transform:"translateX(-45px)" }}src={logo}/>
+          <link
+            href="https://fonts.googleapis.com/css?family=Montserrat"
+            rel="stylesheet"
+          />
+          <img
+            style={{
+              width: "70%",
+              marginTop: "-10px",
+              transform: "translateX(-45px)",
+            }}
+            src={logo}
+          />
           <Text
             // textAlign={useBreakpointValue({ base: "center", md: "left" })}
             // marginLeft={"-110px"}
@@ -58,9 +68,9 @@ export default function WithSubnavigation() {
             marginTop={"40px"}
             whiteSpace={"no-wrap"}
           >
-            SpaceTrace 
+            SpaceTrace
           </Text>
-  
+
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
@@ -247,10 +257,6 @@ const NAV_ITEMS = [
   {
     label: "Home Dashboard",
     href: "/",
-  },
-  {
-    label: "Room Analytics",
-    href: "/room",
   },
   {
     label: "Heatmaps",
