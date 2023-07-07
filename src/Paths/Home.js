@@ -48,11 +48,36 @@ function calculate_engagement(journeys) {
   console.log(sorted_exhibit_scores);
 }
 
+
+
 function Home() {
+const images =["id.png"]
   useEffect(() => {
     console.log(data);
     calculate_engagement(data);
   }, []);
+
+  const boxStyle = {
+    backgroundColor: 'white',
+    borderRadius: '15px',
+    padding: '10px',
+    marginTop: '10px',
+    textAlign: 'center',
+  };
+
+  const imageStyle = {
+    width: '37%',
+    margin: 'auto',
+    marginTop: "10px"
+  }; 
+  const [expandedBoxes, setExpandedBoxes] = useState([false, false, false, false]);
+
+  const handleClick = (index) => {
+    const updatedBoxes = [...expandedBoxes];
+    updatedBoxes[index] = !updatedBoxes[index];
+    setExpandedBoxes(updatedBoxes);
+  };
+
 
   return (
     <Center fontWeight={"bold"}fontFamily={"Montserrat"}>
@@ -65,7 +90,9 @@ function Home() {
           <Text>Overall Stats</Text>
         </Box>
         <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="5px">
-          <h1>Bubble 3</h1>
+          <h1 onClick={() => handleClick(0)}>Bubble 3</h1>
+          {expandedBoxes[0] && <div><img style={imageStyle} src={images[0]} alt="YARONGTECH-100pcs EM 125KHz RFID Rewritable ID" /> 
+          <a href="https://www.amazon.com/YARONGTECH-100pcs-Rewritable-Proximity-control-keyfobs/dp/B01M09Y4L0"><img style={{margin: "0 auto",  width:"20%"}} src={"amazon.png"}  /></a> </div>}
         </Box>
       </Stack>
     </Center>

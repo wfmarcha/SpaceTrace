@@ -46,7 +46,7 @@ export default function WithSubnavigation() {
         ></Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'/>
-        <img style={{width:"70%",marginTop:"-10px", transform:"translateX(-45px)" }}src={logo}/>
+        <img style={{marginLeft: "10px" , width:"70%",marginTop:"-10px", transform:"translateX(-45px)" }}src={logo}/>
           <Text
             // textAlign={useBreakpointValue({ base: "center", md: "left" })}
             // marginLeft={"-110px"}
@@ -247,10 +247,6 @@ const NAV_ITEMS = [
   {
     label: "Home Dashboard",
     href: "/",
-  },
-  {
-    label: "Room Analytics",
-    href: "/room",
   },
   {
     label: "Heatmaps",
