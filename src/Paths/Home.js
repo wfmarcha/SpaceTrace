@@ -15,6 +15,18 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from "@chakra-ui/react";
+
 // import json file
 import data from "../Utils/demo_data.json";
 
@@ -36,20 +48,22 @@ function createChartDataset(data) {
 
   // Define the datasets
   const datasets = [
-    {
-      label: "Total Visits",
-      data: totalVisits,
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-      borderColor: "rgba(255, 99, 132, 1)",
-      borderWidth: 1,
-    },
-    {
-      label: "Total Minutes",
-      data: totalMinutes,
-      backgroundColor: "rgba(54, 162, 235, 0.5)",
-      borderColor: "rgba(54, 162, 235, 1)",
-      borderWidth: 1,
-    },
+    // {
+    //   label: "Total Visits",
+    //   data: totalVisits,
+    //   backgroundColor: "rgba(255, 99, 132, 0.5)",
+    //   borderColor: "rgba(255, 99, 132, 1)",
+    //   borderWidth: 1,
+    //   hidden: true,
+    // },
+    // {
+    //   label: "Total Minutes",
+    //   data: totalMinutes,
+    //   backgroundColor: "rgba(54, 162, 235, 0.5)",
+    //   borderColor: "rgba(54, 162, 235, 1)",
+    //   borderWidth: 1,
+    //   hidden: true,
+    // },
     {
       label: "Average Engagement",
       data: averageEngagement,
@@ -70,11 +84,6 @@ function createChartDataset(data) {
       scales: {
         y: {
           beginAtZero: true,
-        },
-      },
-      plugins: {
-        legend: {
-          position: "right",
         },
       },
     },
@@ -133,6 +142,7 @@ const images =["id.jpg"]
   );
 
   useEffect(() => {
+    console.log(data);
     calculate_engagement(data);
   }, []);
 
@@ -166,11 +176,31 @@ const images =["id.jpg"]
       />
       <Stack direction="column" w="95%">
         <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="10px">
-          <h1>Engagement Score By Room</h1>
+          <h1>Average Minutes Spent Per Room</h1>
           <Bar data={chartData.data} options={chartData.options} />
         </Box>
         <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="5px">
-          <Text>Overall Stats</Text>
+          <Text>Room Leaderboard</Text>
+          <Table variant="simple">
+            <Thead>
+              <Tr>
+                <Th>Room</Th>
+                <Th isNumeric>Average Minutes Spent</Th>
+                <Th isNumeric>Total Visitors</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {calculate_engagement(data)
+                .reverse()
+                .map((exhibit) => (
+                  <Tr key={exhibit[0]}>
+                    <Td>{exhibit[0]}</Td>
+                    <Td isNumeric>{exhibit[1].average_engagement}</Td>
+                    <Td isNumeric>{exhibit[1].total_visits}</Td>
+                  </Tr>
+                ))}
+            </Tbody>
+          </Table>
         </Box>
         <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="5px">
           <h1 onClick={() => handleClick(0)}>Information</h1>
