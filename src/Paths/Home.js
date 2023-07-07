@@ -136,7 +136,7 @@ function calculate_engagement(journeys) {
 
 
 function Home() {
-const images =["id.jpg"]
+const images =["id.jpg", "reader.jpg"]
   const [chartData, setChartData] = useState(
     createChartDataset(calculate_engagement(data))
   );
@@ -205,7 +205,9 @@ const images =["id.jpg"]
         <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="5px">
           <h1 onClick={() => handleClick(0)}>Information</h1>
           {expandedBoxes[0] && <div><Center><h1>RFID Tag</h1></Center><img style={imageStyle} src={images[0]} alt="RFID Tag" /> 
-          <a href="https://www.atlasrfidstore.com/alien-squiggle-rfid-clear-wet-inlay-aln-9640-higgs-3/?utm_device=c&utm_feeditemid=&utm_term=&utm_source=google&utm_medium=cpc&utm_campaign=03-Shopping-Top%20Sellers&hsa_cam=13462510247&hsa_grp=122959257306&hsa_mt=&hsa_src=g&hsa_ad=526881206526&hsa_acc=4442410237&hsa_net=adwords&hsa_kw=&hsa_tgt=pla-294682000766&hsa_ver=3&gclid=Cj0KCQjw756lBhDMARIsAEI0Agl_5FJuY2GQGb61Jbv-QHjqMB6YHMIAuGoaPTzXdBZLv7PJbiJP8r8aAkfUEALw_wcB"><Center><button style={{color: "white" , width: "20%" , padding: "5px" , borderRadius: "10px" , backgroundColor: "green", margin: "0 auto",   fontFamily: "Montserrat"}}>View</button></Center></a> </div>}
+          <a  target="_blank" href="https://www.atlasrfidstore.com/alien-squiggle-rfid-clear-wet-inlay-aln-9640-higgs-3/?utm_device=c&utm_feeditemid=&utm_term=&utm_source=google&utm_medium=cpc&utm_campaign=03-Shopping-Top%20Sellers&hsa_cam=13462510247&hsa_grp=122959257306&hsa_mt=&hsa_src=g&hsa_ad=526881206526&hsa_acc=4442410237&hsa_net=adwords&hsa_kw=&hsa_tgt=pla-294682000766&hsa_ver=3&gclid=Cj0KCQjw756lBhDMARIsAEI0Agl_5FJuY2GQGb61Jbv-QHjqMB6YHMIAuGoaPTzXdBZLv7PJbiJP8r8aAkfUEALw_wcB"><Center><button style={{color: "white" , width: "20%" , padding: "5px" , borderRadius: "10px" , backgroundColor: "green", margin: "0 auto",   fontFamily: "Montserrat"}}>View</button></Center></a>
+          <Center marginTop="30px"><h1>RFID Reader</h1></Center><img style={imageStyle} src={images[1]} alt="RFID Reader" /> 
+          <a  target="_blank" href="https://www.atlasrfidstore.com/alien-squiggle-rfid-clear-wet-inlay-aln-9640-higgs-3/?utm_device=c&utm_feeditemid=&utm_term=&utm_source=google&utm_medium=cpc&utm_campaign=03-Shopping-Top%20Sellers&hsa_cam=13462510247&hsa_grp=122959257306&hsa_mt=&hsa_src=g&hsa_ad=526881206526&hsa_acc=4442410237&hsa_net=adwords&hsa_kw=&hsa_tgt=pla-294682000766&hsa_ver=3&gclid=Cj0KCQjw756lBhDMARIsAEI0Agl_5FJuY2GQGb61Jbv-QHjqMB6YHMIAuGoaPTzXdBZLv7PJbiJP8r8aAkfUEALw_wcB"><Center><button style={{color: "white" , width: "20%" , padding: "5px" , borderRadius: "10px" , backgroundColor: "green", margin: "0 auto",   fontFamily: "Montserrat"}}>View</button></Center></a> </div>}
         </Box>
       </Stack>
     </Center>
