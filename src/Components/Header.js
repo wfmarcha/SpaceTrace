@@ -51,7 +51,8 @@ export default function WithSubnavigation() {
           />
           <img
             style={{
-              marginLeft: "10px",
+              marginLeft: "20px",
+              maxWidth: "200px",
               width: "70%",
               marginTop: "-10px",
               transform: "translateX(-45px)",
