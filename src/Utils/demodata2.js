@@ -17,7 +17,6 @@ const exhibitNames = [
 const hotLocations = ["Senserie", "Artifacts", "ReThink Extinct"];
 
 // Average time spent in hot locations (in minutes)
-const hotLocationDelayMinutes = 20;
 
 // Generate demo data for a single item
 function generateDemoItem(previousExhibit, i) {
@@ -37,10 +36,11 @@ function generateDemoItem(previousExhibit, i) {
 
   const now = new Date();
   let randomDelayMinutes = Math.floor(Math.random() * 16) + 5;
+  let randomDelayHotLocations = Math.floor(Math.random() * 30) + 15;
 
-  // add extra 10-20 minutes to hot location
-  if (hotLocations.includes(exhibit)) {
-    randomDelayMinutes += Math.floor(Math.random() * 11) + 10;
+  // check if previous exhibit is a hot location
+  if (previousExhibit && hotLocations.includes(previousExhibit.loc)) {
+    randomDelayMinutes = randomDelayHotLocations;
   }
 
   const timestamp = new Date(
