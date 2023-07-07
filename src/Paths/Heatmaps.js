@@ -31,7 +31,6 @@ function Heatmaps() {
   };
 
   return (
-    <div>
     <div style={{fontWeight:"bold"}}>
       <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'/>
       <h1>Heatmaps</h1>
