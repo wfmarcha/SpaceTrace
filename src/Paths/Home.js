@@ -133,10 +133,8 @@ function calculate_engagement(journeys) {
   return sorted_exhibit_scores;
 }
 
-
-
 function Home() {
-const images =["id.jpg"]
+  const images = ["id.jpg"];
   const [chartData, setChartData] = useState(
     createChartDataset(calculate_engagement(data))
   );
@@ -147,26 +145,30 @@ const images =["id.jpg"]
   }, []);
 
   const boxStyle = {
-    backgroundColor: 'white',
-    borderRadius: '15px',
-    padding: '10px',
-    marginTop: '10px',
-    textAlign: 'center',
+    backgroundColor: "white",
+    borderRadius: "15px",
+    padding: "10px",
+    marginTop: "10px",
+    textAlign: "center",
   };
 
   const imageStyle = {
-    width: '37%',
-    margin: 'auto',
-    marginTop: "10px"
-  }; 
-  const [expandedBoxes, setExpandedBoxes] = useState([false, false, false, false]);
+    width: "37%",
+    margin: "auto",
+    marginTop: "10px",
+  };
+  const [expandedBoxes, setExpandedBoxes] = useState([
+    false,
+    false,
+    false,
+    false,
+  ]);
 
   const handleClick = (index) => {
     const updatedBoxes = [...expandedBoxes];
     updatedBoxes[index] = !updatedBoxes[index];
     setExpandedBoxes(updatedBoxes);
   };
-
 
   return (
     <Center fontWeight={"bold"} fontFamily={"Montserrat"}>
@@ -180,7 +182,7 @@ const images =["id.jpg"]
           <Bar data={chartData.data} options={chartData.options} />
         </Box>
         <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="5px">
-          <Text>Room Leaderboard</Text>
+          <Text>Exhibit Leaderboard</Text>
           <Table variant="simple">
             <Thead>
               <Tr>
@@ -204,8 +206,31 @@ const images =["id.jpg"]
         </Box>
         <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="5px">
           <h1 onClick={() => handleClick(0)}>Information</h1>
-          {expandedBoxes[0] && <div><Center><h1>RFID Tag</h1></Center><img style={imageStyle} src={images[0]} alt="RFID Tag" /> 
-          <a href="https://www.atlasrfidstore.com/alien-squiggle-rfid-clear-wet-inlay-aln-9640-higgs-3/?utm_device=c&utm_feeditemid=&utm_term=&utm_source=google&utm_medium=cpc&utm_campaign=03-Shopping-Top%20Sellers&hsa_cam=13462510247&hsa_grp=122959257306&hsa_mt=&hsa_src=g&hsa_ad=526881206526&hsa_acc=4442410237&hsa_net=adwords&hsa_kw=&hsa_tgt=pla-294682000766&hsa_ver=3&gclid=Cj0KCQjw756lBhDMARIsAEI0Agl_5FJuY2GQGb61Jbv-QHjqMB6YHMIAuGoaPTzXdBZLv7PJbiJP8r8aAkfUEALw_wcB"><Center><button style={{color: "white" , width: "20%" , padding: "5px" , borderRadius: "10px" , backgroundColor: "green", margin: "0 auto",   fontFamily: "Montserrat"}}>View</button></Center></a> </div>}
+          {expandedBoxes[0] && (
+            <div>
+              <Center>
+                <h1>RFID Tag</h1>
+              </Center>
+              <img style={imageStyle} src={images[0]} alt="RFID Tag" />
+              <a href="https://www.atlasrfidstore.com/alien-squiggle-rfid-clear-wet-inlay-aln-9640-higgs-3/?utm_device=c&utm_feeditemid=&utm_term=&utm_source=google&utm_medium=cpc&utm_campaign=03-Shopping-Top%20Sellers&hsa_cam=13462510247&hsa_grp=122959257306&hsa_mt=&hsa_src=g&hsa_ad=526881206526&hsa_acc=4442410237&hsa_net=adwords&hsa_kw=&hsa_tgt=pla-294682000766&hsa_ver=3&gclid=Cj0KCQjw756lBhDMARIsAEI0Agl_5FJuY2GQGb61Jbv-QHjqMB6YHMIAuGoaPTzXdBZLv7PJbiJP8r8aAkfUEALw_wcB">
+                <Center>
+                  <button
+                    style={{
+                      color: "white",
+                      width: "20%",
+                      padding: "5px",
+                      borderRadius: "10px",
+                      backgroundColor: "green",
+                      margin: "0 auto",
+                      fontFamily: "Montserrat",
+                    }}
+                  >
+                    View
+                  </button>
+                </Center>
+              </a>{" "}
+            </div>
+          )}
         </Box>
       </Stack>
     </Center>
