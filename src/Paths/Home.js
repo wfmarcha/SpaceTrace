@@ -167,6 +167,62 @@ const images =["id.jpg"]
     setExpandedBoxes(updatedBoxes);
   };
 
+  const today = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = today.toLocaleDateString(undefined, options);
+  const [visitors, setVisitors] = useState(getRandomNumber(200, 500));
+  const [countingUp, setCountingUp] = useState(false);
+
+  function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  
+  function getRandomIncrement() {
+    return Math.random() < 0.5 ? getRandomNumber(1, 2) : -getRandomNumber(1, 2);
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisitors(prevVisitors => {
+        const increment = getRandomIncrement();
+        return prevVisitors + increment;
+      });
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const CountUp = ({ start, end, duration }) => {
+    const [count, setCount] = useState(start);
+    const increment = Math.ceil((end - start) / (duration * 60));
+  
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCount(prevCount => {
+          if (prevCount >= end) {
+            clearInterval(interval);
+            return end;
+          }
+          return prevCount + increment;
+        });
+      }, 1000 / 60);
+  
+      return () => clearInterval(interval);
+    }, [end, increment]);
+  
+    return <span>{count}</span>;
+  };
+
+  useEffect(() => {
+    if (countingUp) {
+      const timeout = setTimeout(() => {
+        setCountingUp(false);
+      }, 3000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [countingUp]);
+
 
   return (
     <Center fontWeight={"bold"} fontFamily={"Montserrat"}>
@@ -175,6 +231,11 @@ const images =["id.jpg"]
         rel="stylesheet"
       />
       <Stack direction="column" w="95%">
+      <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="5px">
+        <h1>{formattedDate}</h1>
+        <h1>Current Visitors: {countingUp ? <CountUp start={0} end={visitors} duration={5} /> : visitors}</h1>
+          </Box>
+          
         <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="10px">
           <h1>Average Minutes Spent Per Room</h1>
           <Bar data={chartData.data} options={chartData.options} />
