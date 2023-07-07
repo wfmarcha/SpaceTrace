@@ -67,7 +67,6 @@ function createChartDataset(data) {
       datasets: datasets,
     },
     options: {
-      indexAxis: "y",
       scales: {
         y: {
           beginAtZero: true,
@@ -132,7 +131,6 @@ function Home() {
 
   useEffect(() => {
     calculate_engagement(data);
-    console.log(chartData);
   }, []);
 
   return (
