@@ -170,6 +170,65 @@ function Home() {
     setExpandedBoxes(updatedBoxes);
   };
 
+  const [visitors, setVisitors] = useState(getRandomNumber(200, 500));
+  const [countingUp, setCountingUp] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisitors(prevVisitors => {
+        const increment = getRandomIncrement();
+        return prevVisitors + increment;
+      });
+      setCountingUp(true);
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (countingUp) {
+      const timeout = setTimeout(() => {
+        setCountingUp(false);
+      }, 1000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [countingUp]);
+
+  const today = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = today.toLocaleDateString(undefined, options);
+
+
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function getRandomIncrement() {
+  return Math.random() < 0.5 ? getRandomNumber(1, 2) : -getRandomNumber(1, 2);
+}
+
+const CountUp = ({ start, end, duration }) => {
+  const [count, setCount] = useState(start);
+  const increment = Math.ceil((end - start) / (duration * 60));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(prevCount => {
+        if (prevCount >= end) {
+          clearInterval(interval);
+          return end;
+        }
+        return prevCount + increment;
+      });
+    }, 1000 / 60);
+
+    return () => clearInterval(interval);
+  }, [end, increment]);
+
+  return <span>{count}</span>;
+};
+
   return (
     <Center fontWeight={"bold"} fontFamily={"Montserrat"}>
       <link
