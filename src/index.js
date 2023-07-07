@@ -19,16 +19,16 @@ const theme = extendTheme({
       900: "#1a202c",
     },
   },
-  fonts: {
-    heading: "Montserrat",
-    body: "Montserrat",
-  },
+  // fonts: {
+  //   heading: "Montserrat",
+  //   body: "Montserrat",
+  // },
 
   // make it so that body background color is different shade of white
   styles: {
     global: {
       body: {
-        bg: "blue.200",
+        bg: "#172E47",
       },
     },
   },

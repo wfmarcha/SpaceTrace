@@ -1,3 +1,4 @@
+import logo from "./logo.png";
 import {
   Box,
   Flex,
@@ -41,15 +42,34 @@ export default function WithSubnavigation() {
         <Flex
           flex={{ base: 1, md: "auto" }}
           ml={{ base: -2 }}
-          display={{ base: "flex", md: "none" }}
+          display={{ base: "inline", md: "none" }}
         ></Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+          <link
+            href="https://fonts.googleapis.com/css?family=Montserrat"
+            rel="stylesheet"
+          />
+          <img
+            style={{
+              marginLeft: "10px",
+              width: "70%",
+              marginTop: "-10px",
+              transform: "translateX(-45px)",
+            }}
+            src={logo}
+          />
           <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
+            // textAlign={useBreakpointValue({ base: "center", md: "left" })}
+            // marginLeft={"-110px"}
             fontFamily={"Montserrat"}
             color={useColorModeValue("gray.800", "white")}
+            fontSize={"30px"}
+            fontWeight={"bold"}
+            transform={"translateX(-55px)"}
+            marginTop={"40px"}
+            whiteSpace={"no-wrap"}
           >
-            Space Trace 🇺🇸🌙
+            SpaceTrace
           </Text>
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
@@ -238,10 +258,6 @@ const NAV_ITEMS = [
   {
     label: "Home Dashboard",
     href: "/",
-  },
-  {
-    label: "Room Analytics",
-    href: "/room",
   },
   {
     label: "Heatmaps",
