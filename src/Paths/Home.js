@@ -4,8 +4,84 @@ import { Routes, Route } from "react-router-dom";
 import { Heading, Box, Stack, Center, Text } from "@chakra-ui/react";
 // make vstack center aligned
 
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+
 // import json file
 import data from "../Utils/demo_data.json";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+function createChartDataset(data) {
+  // Extract labels and values from the data
+  const labels = data.map((entry) => entry[0]);
+  const totalVisits = data.map((entry) => entry[1].total_visits);
+  const totalMinutes = data.map((entry) => entry[1].total_minutes);
+  const averageEngagement = data.map((entry) => entry[1].average_engagement);
+
+  // Define the datasets
+  const datasets = [
+    {
+      label: "Total Visits",
+      data: totalVisits,
+      backgroundColor: "rgba(255, 99, 132, 0.5)",
+      borderColor: "rgba(255, 99, 132, 1)",
+      borderWidth: 1,
+    },
+    {
+      label: "Total Minutes",
+      data: totalMinutes,
+      backgroundColor: "rgba(54, 162, 235, 0.5)",
+      borderColor: "rgba(54, 162, 235, 1)",
+      borderWidth: 1,
+    },
+    {
+      label: "Average Engagement",
+      data: averageEngagement,
+      backgroundColor: "rgba(75, 192, 192, 0.5)",
+      borderColor: "rgba(75, 192, 192, 1)",
+      borderWidth: 1,
+    },
+  ];
+
+  // Create the chart configuration object
+  const chartConfig = {
+    type: "bar",
+    data: {
+      labels: labels,
+      datasets: datasets,
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+      plugins: {
+        legend: {
+          position: "right",
+        },
+      },
+    },
+  };
+
+  return chartConfig;
+}
 
 function calculate_engagement(journeys) {
   var exhibit_scores = {};
@@ -45,15 +121,18 @@ function calculate_engagement(journeys) {
     );
   }
 
-  console.log(sorted_exhibit_scores);
+  return sorted_exhibit_scores;
 }
 
 
 
 function Home() {
 const images =["id.png"]
+  const [chartData, setChartData] = useState(
+    createChartDataset(calculate_engagement(data))
+  );
+
   useEffect(() => {
-    console.log(data);
     calculate_engagement(data);
   }, []);
 
@@ -80,11 +159,15 @@ const images =["id.png"]
 
 
   return (
-    <Center fontWeight={"bold"}fontFamily={"Montserrat"}>
-      <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'/>
+    <Center fontWeight={"bold"} fontFamily={"Montserrat"}>
+      <link
+        href="https://fonts.googleapis.com/css?family=Montserrat"
+        rel="stylesheet"
+      />
       <Stack direction="column" w="95%">
         <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="10px">
           <h1>Engagement Score By Room</h1>
+          <Bar data={chartData.data} options={chartData.options} />
         </Box>
         <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="5px">
           <Text>Overall Stats</Text>
