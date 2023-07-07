@@ -66,34 +66,16 @@ function createChartDataset(data) {
       labels: labels,
       datasets: datasets,
     },
-    // options: {
-    //   indexAxis: "y",
-    //   scales: {
-    //     y: {
-    //       beginAtZero: true,
-    //     },
-    //   },
-    //   plugins: {
-    //     legend: {
-    //       position: "right",
-    //     },
-    //   },
-    // },
     options: {
       indexAxis: "y",
-      elements: {
-        bar: {
-          borderWidth: 2,
+      scales: {
+        y: {
+          beginAtZero: true,
         },
       },
-      responsive: true,
       plugins: {
         legend: {
           position: "right",
-        },
-        title: {
-          display: true,
-          text: "Chart.js Horizontal Bar Chart",
         },
       },
     },
