@@ -33,9 +33,10 @@ function calculate_engagement(journeys) {
 
     // iterate each exhibit score and add average engagement time
     for (var exhibit in exhibit_scores) {
-      exhibit_scores[exhibit].average_engagement =
+      exhibit_scores[exhibit].average_engagement = Math.round(
         exhibit_scores[exhibit].total_minutes /
-        exhibit_scores[exhibit].total_visits;
+          exhibit_scores[exhibit].total_visits
+      );
     }
 
     // sort by average engagement time
@@ -44,7 +45,7 @@ function calculate_engagement(journeys) {
     );
   }
 
-  console.log(exhibit_scores);
+  console.log(sorted_exhibit_scores);
 }
 
 function Home() {
