@@ -239,6 +239,7 @@ const CountUp = ({ start, end, duration }) => {
       <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="5px">
         <h1>{formattedDate}</h1>
         <h1>Current Visitors: {countingUp ? <CountUp start={0} end={visitors} duration={5} /> : visitors}</h1>
+
           </Box>
           
         <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="10px">
@@ -269,7 +270,7 @@ const CountUp = ({ start, end, duration }) => {
           </Table>
         </Box>
         <Box backgroundColor="white" borderRadius={"15px"} p="10px" mt="5px">
-          <h1 onClick={() => handleClick(0)}>Information</h1>
+          <h1 onClick={() => handleClick(0)}>Equipment</h1>
           {expandedBoxes[0] && (
             <div>
               <Center>
