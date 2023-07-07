@@ -2,9 +2,10 @@ import React, { useState } from "react";
 // import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Heading, Box, Stack, Center } from "@chakra-ui/react";
-import './Heatmaps.css'; // Import CSS file for Heatmaps component
+
 
 const images = ["First-Floor_BMS_8.2022.jpg", "Second-Floor_BMS_9.2.22-pdf.jpg", "Third-Floor_BMS_8.2022.jpg", "Fourth-Floor_BMS_8.2022.jpg"]
+
 
 
 function Heatmaps() {
@@ -32,7 +33,6 @@ function Heatmaps() {
   return (
     <div style={{fontWeight:"bold"}}>
       <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'/>
-      <h1>Heatmaps</h1>
       <div style={boxStyle} onClick={() => handleClick(0)}>
         <h1 style={{ marginTop: 0 }}>Floor 1</h1>
         {expandedBoxes[0] && <img style={imageStyle} src={images[0]} alt="Heatmap 1" />}

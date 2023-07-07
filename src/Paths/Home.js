@@ -134,7 +134,7 @@ function calculate_engagement(journeys) {
 }
 
 function Home() {
-  const images = ["id.jpg"];
+  const images = ["id.jpg", "reader.jpg"];
   const [chartData, setChartData] = useState(
     createChartDataset(calculate_engagement(data))
   );
